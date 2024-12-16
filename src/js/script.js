@@ -63,13 +63,13 @@ function addGameCode(countryCode, countryName) {
                 <p class="text-4xl text-pink-500 font-bold mb-5">Guess the flag ?</p>
                 <img src="https://flagcdn.com/w320/${countryCode}.png" width="320" alt="${countryName}">
                 <div id="options" class="flex flex-col">
-                    <div>
-                        <button id="option-1" class="my-8 bg-pink-500 py-3 px-14 rounded-md hover:drop-shadow-2xl text-white">${result[0]}</button>
-                        <button id="option-2" class="my-8 bg-pink-500 py-3 px-14 rounded-md hover:drop-shadow-2xl text-white">${result[1]}</button>
+                    <div class="flex gap-3">
+                        <button id="option-1" class="my-8  w-1/2 bg-pink-500 py-3 px-14 rounded-md hover:drop-shadow-2xl text-white">${result[0]}</button>
+                        <button id="option-2" class="my-8  w-1/2 bg-pink-500 py-3 px-14 rounded-md hover:drop-shadow-2xl text-white">${result[1]}</button>
                     </div>
-                    <div>
-                        <button id="option-3" class="my-8 bg-pink-500 py-3 px-14 rounded-md hover:drop-shadow-2xl text-white">${result[2]}</button>
-                        <button id="option-4" class="my-8 bg-pink-500 py-3 px-14 rounded-md hover:drop-shadow-2xl text-white">${result[3]}</button>
+                    <div class="flex gap-3">
+                        <button id="option-3" class="my-8  w-1/2 bg-pink-500 py-3 px-14 rounded-md hover:drop-shadow-2xl text-white">${result[2]}</button>
+                        <button id="option-4" class="my-8  w-1/2 bg-pink-500 py-3 px-14 rounded-md hover:drop-shadow-2xl text-white">${result[3]}</button>
                     </div>
                 </div>
             </div>`;
