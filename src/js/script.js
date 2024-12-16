@@ -4,6 +4,7 @@ const mainContent = document.querySelector('#main-content');
 const gamePage = document.querySelector('#game')
 
 let isGameStarted = 0;
+let score = 0;
 
 
 function removeFirstPageContent() {
@@ -31,31 +32,6 @@ function fetchRandomFlag() {
         .catch(error => console.error('Error:', error));
 }
 
-// function getRandomValues(count = 3) {
-//     return fetch('json/flagCodes.json')
-//         .then(response => response.json())
-//         .then(data => {
-//             const entries = Object.entries(data);
-//             const randomValues = new Set();
-
-//             while (randomValues.size < count && randomValues.size < entries.length) {
-//                 const randomIndex = Math.floor(Math.random() * entries.length);
-//                 const [, value] = entries[randomIndex];
-//                 randomValues.add(value);
-//             }
-
-//             return Array.from(randomValues);
-//         })
-//         .catch(error => {
-//             console.error('Error:', error);
-//             return [];
-//         });
-// }
-// function create4options(countryName){
-//     let threeOptions = getRandomValues();
-//     let fouroptions = threeOptions.splice(randomNumber, 0, countryName);
-//     console.log(fouroptions)
-// }
 
 async function loadCountryData() {
     const response = await fetch('json/flagCodes.json'); // Fetch data from your data.json file
@@ -87,6 +63,10 @@ function addGameCode(countryCode, countryName) {
         result.splice(randomNumber, 0, countryName);
         
         const gameCode = `<div class="flex flex-col items-center h-screen justify-center">
+        <div id="score" class="font-Inter text-pink-500 text-2xl mb-6 font-semibold flex justify-center">
+            <p>Score: </p>
+            <p>${score}</p>
+        </div>
     <p class="text-4xl text-pink-500 font-bold mb-5">Guess the flag ?</p>
     <img src="https://flagcdn.com/w320/${countryCode}.png" width="320" alt="${countryName}">
     <div id="options" class="flex flex-col">
@@ -105,17 +85,56 @@ function addGameCode(countryCode, countryName) {
     </div>
 </div>`;
         gamePage.innerHTML += gameCode;
-
-
+        const option1 = document.querySelector("#option-1")
+        const option2 = document.querySelector("#option-2")
+        const option3 = document.querySelector("#option-3")
+        const option4 = document.querySelector("#option-4")
+        checkAnswer(option1, option2, option3, option4, countryName)
     })
 
 
+}
+
+function checkAnswer(o1, o2, o3, o4, country_name){
+    o1.addEventListener('click', (e)=>{
+        // console.log(`${e.target.textContent} clicked`);
+        if (e.target.textContent === country_name) {
+            console.log('right answer')
+        } else {
+            console.log('wrong answer')
+        }
+    })
+    o2.addEventListener('click', (e)=>{
+        // console.log(`${e.target.textContent} clicked`);
+        if (e.target.textContent === country_name) {
+            console.log('right answer')
+        } else {
+            console.log('wrong answer')
+        }
+    })
+    o3.addEventListener('click', (e)=>{
+        // console.log(`${e.target.textContent} clicked`);
+        if (e.target.textContent === country_name) {
+            console.log('right answer')
+        } else {
+            console.log('wrong answer')
+        }
+    })
+    o4.addEventListener('click', (e)=>{
+        // console.log(`${e.target.textContent} clicked`);
+        if (e.target.textContent === country_name) {
+            console.log('right answer')
+        } else {
+            console.log('wrong answer')
+        }
+    })
 }
 
 function startGame() {
     isGameStarted = 1;
     removeFirstPageContent();
     fetchRandomFlag();
+    
 }
 
 
